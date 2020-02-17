@@ -139,15 +139,13 @@ function processProduct(num1, num2, callback) {
  */
 function processContains(item, list, callback) {
   return callback(function() {
-    let bool;
     for (let i = 0; i < list.length; i++) {
       if (item === list[i]) {
-        bool = true;
+        return true;
       } else {
-        bool = false;
+        return false;
       }
     }
-    return bool;
   });
 }
 
@@ -193,9 +191,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * The full names appear in the array in the same order the runners appear in the `runners` array.
  */
 function getFullNames(runners) {
-   const newArr = runners.forEach(el => {
-     
-   })
+  const runnersArr = [];
+  runners.forEach(el => {
+    const name = `${el.last_name}, ${el.first_name}`;
+    runnersArr.push(name);
+  });
+  return runnersArr;
 }
 
 /**
@@ -210,8 +211,11 @@ function getFullNames(runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
  */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  const capRunners = runners.map(el => {
+    return el.first_name.toUpperCase();
+  });
+  return capRunners;
 }
 
 /**
